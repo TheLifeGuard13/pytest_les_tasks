@@ -15,6 +15,13 @@ def calculate_taxes(prices: list[float], tax_rate: float) -> list[float]:
     return taxed_prices
 
 
-print(calculate_taxes([0.5, 1.5, 5.5, 10.5], 100))
-print(calculate_taxes([0.5, 1.5, 5.5, 10.5], 10))
-print(calculate_taxes([0.5, 1.5, 5.5, 10.5], 1))
+def calculate_tax(price: float, tax_rate: float) -> float:
+    """Функция вычисляет стоимость товара с учётом налога."""
+    if price <= 0:
+        raise ValueError('Неверная цена')
+    elif tax_rate < 0 or tax_rate >= 100:
+        raise ValueError('Неверный налоговый процент')
+    else:
+        taxed_price = price * tax_rate / 100
+
+    return taxed_price
