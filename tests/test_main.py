@@ -3,6 +3,16 @@ from src.main import calculate_taxes
 import pytest
 
 
+def test_wrong_rate():
+    with pytest.raises(ValueError):
+        calculate_taxes([0.5, 1.5, 5.5, 10.5], -100)
+
+
+def test_wrong_price():
+    with pytest.raises(ValueError):
+        calculate_taxes([-0.5, 1.5, 5.5, 10.5], 100)
+
+
 @pytest.fixture
 def prices():
     return [0.5, 1.5, 5.5, 10.5]
